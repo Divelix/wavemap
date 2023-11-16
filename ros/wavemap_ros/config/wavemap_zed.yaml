@@ -1,0 +1,34 @@
+map:
+  general:
+    world_frame: "odom"
+    pruning_period: { seconds: 5.0 }
+    publication_period: { seconds: 0.1 }
+  data_structure:
+    type: hashed_chunked_wavelet_octree
+    min_cell_width: { meters: 0.1 }
+
+inputs:
+  - type: depth_image
+    general:
+      topic_name: "/zed/zed_node/depth/depth_registered"
+      topic_queue_length: 10
+      max_wait_for_pose: { seconds: 1.0 }
+    integrators:
+      - integration_method:
+          type: hashed_chunked_wavelet_integrator
+          min_range: { meters: 0.1 }
+          max_range: { meters: 5.0 }
+          termination_update_error: 0.1
+        projection_model:
+          type: pinhole_camera_projector
+          width: 1280
+          height: 720
+          fx: 730.4891357421875
+          fy: 636.2747192382812
+          cx: 730.4891357421875
+          cy: 351.04779052734375
+        measurement_model:
+          type: continuous_ray
+          range_sigma: { meters: 0.01 }
+          scaling_free: 0.2
+          scaling_occupied: 0.4

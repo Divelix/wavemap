@@ -1,0 +1,24 @@
+<launch>
+  <!-- Rosbag paths -->
+  <!-- NOTE: Relative paths will be resolved w.r.t. ROS_HOME (default ~/.ros) -->
+  <arg name="rosbag_dir" default="../data/zed_bags"
+       doc="Path to the directory containing the rosbags."/>
+
+  <!-- Wavemap params -->
+  <arg name="param_file"
+       default="$(find wavemap_ros)/config/wavemap_zed.yaml"
+       doc="Name of the file from which to read wavemap's server params."/>
+  <arg name="use_batch_mode"
+       default="false"
+       doc="Whether to process the rosbag in batch mode or replay the rosbag.
+            Note that batch mode can only be used if a rosbag with pre-processed odometry is available."/>
+
+  <!-- Mapping -->
+  <group>
+    <!-- Concatenate the rosbag paths -->
+    <arg name="rosbag_path" value="$(arg rosbag_dir)/zed_dyn.bag"/>
+
+    <!-- Run wavemap -->
+    <include file="$(find wavemap_ros)/launch/datasets/dataset_base.launch" pass_all_args="true"/>
+  </group>
+</launch>
