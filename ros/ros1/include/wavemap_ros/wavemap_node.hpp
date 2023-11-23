@@ -1,18 +1,18 @@
 #pragma once
 
 // wavemap
-#include "wavemap/core/include/wavemap/tmp_check_3rdparty.hh"
+#include <wavemap/tmp_check_3rdparty.hh>
 
 // ROS
-#include <ros/ros.h>
-
 #include <string>
+
+#include <ros/ros.h>
 
 namespace wavemap_ros {
 
 class MyCoreClass {
  public:
-  MyCoreClass(const ros::NodeHandle &nh, const ros::NodeHandle &pnh);
+  MyCoreClass(const ros::NodeHandle& nh, const ros::NodeHandle& pnh);
 
  private:
   ros::NodeHandle nh_;

@@ -1,18 +1,19 @@
 #pragma once
 
 // wavemap
-#include "wavemap/core/include/wavemap/tmp_check_3rdparty.hh"
+#include <wavemap/tmp_check_3rdparty.hh>
 
 // ROS
-#include <rclcpp/rclcpp.hpp>
 #include <string>
+
+#include <rclcpp/rclcpp.hpp>
 
 namespace wavemap_ros {
 
 class MyCoreClass : public rclcpp::Node {
  public:
   MyCoreClass() = delete;
-  explicit MyCoreClass(const rclcpp::NodeOptions &options);
+  explicit MyCoreClass(const rclcpp::NodeOptions& options);
 };
 
 }  // namespace wavemap_ros

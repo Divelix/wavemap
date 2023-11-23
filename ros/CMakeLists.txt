@@ -19,7 +19,12 @@ if("$ENV{ROS_VERSION}" STREQUAL "1")
   # ROS 1 node
   add_executable(wavemap_node ros1/src/wavemap_node.cpp)
   target_compile_features(wavemap_node PUBLIC cxx_std_20)
-  target_include_directories(wavemap_node PUBLIC ros1/include ${catkin_INCLUDE_DIRS})
+  target_include_directories(wavemap_node
+    PUBLIC
+      ros1/include
+      ../wavemap/core/include
+      ${catkin_INCLUDE_DIRS}
+  )
   target_link_libraries(wavemap_node wavemap::core ${catkin_LIBRARIES})
   install(TARGETS wavemap_node RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
   install(DIRECTORY launch DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
@@ -34,7 +39,11 @@ elseif("$ENV{ROS_VERSION}" STREQUAL "2")
   # ROS 2 node
   add_library(wavemap_component SHARED ros2/src/wavemap_node.cpp)
   target_compile_features(wavemap_component PUBLIC cxx_std_20)
-  target_include_directories(wavemap_component PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/ros2/include)
+  target_include_directories(wavemap_component
+    PRIVATE
+      ${CMAKE_CURRENT_SOURCE_DIR}/ros2/include
+      ${CMAKE_CURRENT_SOURCE_DIR}/../wavemap/core/include
+  )
   target_link_libraries(wavemap_component wavemap::core)
   ament_target_dependencies(
     wavemap_component
