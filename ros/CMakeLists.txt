@@ -54,7 +54,7 @@ elseif("$ENV{ROS_VERSION}" STREQUAL "2")
   rclcpp_components_register_node(wavemap_component PLUGIN "wavemap_ros::MyCoreClass" EXECUTABLE wavemap_node)
 
   install(TARGETS wavemap_component LIBRARY DESTINATION lib RUNTIME DESTINATION lib/${PROJECT_NAME})
-  install(DIRECTORY launch rviz DESTINATION share/${PROJECT_NAME}/)
+  # install(DIRECTORY launch rviz DESTINATION share/${PROJECT_NAME}/)
 
   ament_package()
 
