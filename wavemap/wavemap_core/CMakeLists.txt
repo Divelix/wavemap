@@ -1,6 +1,5 @@
-add_library(core STATIC)
-add_library(wavemap::core ALIAS core)
-target_sources(core PRIVATE
+add_library(wavemap_core STATIC)
+target_sources(wavemap_core PRIVATE
     src/tmp_check_3rdparty.cc
     src/config/value_with_unit.cc
     src/data_structure/volumetric/hashed_blocks.cc
@@ -33,6 +32,6 @@ target_sources(core PRIVATE
     src/utils/stopwatch.cc
     src/utils/thread_pool.cc
 )
-target_include_directories(core PRIVATE include)
-target_link_libraries(core PUBLIC Eigen3::Eigen glog::glog TracyClient)
-set_global_target_properties(core)
+target_include_directories(wavemap_core PRIVATE include)
+target_link_libraries(wavemap_core PUBLIC Eigen3::Eigen glog::glog TracyClient)
+set_global_target_properties(wavemap_core)

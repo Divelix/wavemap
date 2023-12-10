@@ -25,5 +25,5 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 include(3rdparty/find_dependencies.cmake)
 include(cmake/CompilerOptions.cmake)
 
-add_subdirectory(core)
-add_subdirectory(io)
+add_subdirectory(wavemap_core)
+add_subdirectory(wavemap_io)
